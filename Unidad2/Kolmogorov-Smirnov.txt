@@ -1,0 +1,22 @@
+import numpy as np
+from scipy import stats
+import matplotlib.pyplot as plt
+
+# Generar una muestra de datos, en este caso, una distribución normal
+np.random.seed(123)
+sample = np.random.normal(loc=0, scale=1, size=1000)
+
+# Realizar la prueba K-S
+ks_statistic, p_value = stats.kstest(sample, 'norm')
+
+print(f'Estadístico K-S: {ks_statistic}')
+print(f'Valor p: {p_value}')
+
+# Visualización
+plt.hist(sample, bins=30, density=True, alpha=0.6, color='g', edgecolor='black')
+xmin, xmax = plt.xlim()
+x = np.linspace(xmin, xmax, 100)
+p = stats.norm.pdf(x, 0, 1)
+plt.plot(x, p, 'k', linewidth=2)
+plt.title('Distribución de la Muestra y Curva de la Distribución Normal')
+plt.show()

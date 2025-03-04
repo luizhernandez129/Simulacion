@@ -1,0 +1,8 @@
+import random
+
+# Generar 100 números aleatorios
+numeros_aleatorios = [random.randint(1, 100) for _ in range(100)]
+
+# Imprimir los números aleatorios
+for numero in numeros_aleatorios:
+    print(numero)
